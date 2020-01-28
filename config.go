@@ -45,7 +45,7 @@ func (o *Config) Reload() error {
 		o.innerCnf = config.NewFakeConfig()
 	}
 
-	o.LogDir = o.innerCnf.DefaultString("log::dir", "../log")
+	o.LogDir = o.innerCnf.DefaultString("log::dir", "")
 	o.LogLevel = o.innerCnf.DefaultString("log::level", "info")
 
 	o.ExpireDays = o.innerCnf.DefaultInt("expire_days", 7)

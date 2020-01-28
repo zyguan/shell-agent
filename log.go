@@ -17,13 +17,15 @@ func InitLog() error {
 		return err
 	}
 
-	fw, err := rotator.NewFileRotator(gApp.Cnf.LogDir + "/app.log")
-	if err != nil {
-		log.Errorf("set log failed: %s", err)
-		return err
+	if len(gApp.Cnf.LogDir) > 0 {
+		fw, err := rotator.NewFileRotator(gApp.Cnf.LogDir + "/app.log")
+		if err != nil {
+			log.Errorf("set log failed: %s", err)
+			return err
+		}
+		log.SetOutput(fw)
 	}
 
-	log.SetOutput(fw)
 	log.SetLevel(level)
 	log.AddHook(NewAlarmHook())
 

@@ -89,7 +89,6 @@ func (o *Application) Run() {
 	}
 	defer UninitLog()
 
-	log.Print("")
 	log.Print("application started")
 
 	// Run the http server
